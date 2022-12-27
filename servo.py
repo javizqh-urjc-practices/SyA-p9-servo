@@ -26,22 +26,26 @@ def callbackSalir(senial, cuadro):
     sys.exit(0)
 
 def callbackBotonPulsado (canal):
+    '''Change the direction of the motor'''
     global estado
     estado = not estado
         
 def adelante (velocidad): # girar en un sentido a velocidad máxima 120 rpm
+    '''Goes to the front with the specified speed (0-100)'''
     vel = normalize(int(velocidad),[100,0],[1720,1500 + 25])
     miServo.set_servo_pulsewidth(servoPin, vel) # 36 hasta que empiece
 
 def atras (velocidad): # girar en el otro sentido a velocidad máxima
+    '''Goes to the back with the specified speed (0-100)'''
     vel = normalize(int(velocidad),[100,0],[1280,1500 - 36])
     miServo.set_servo_pulsewidth(servoPin, vel) # 36 hasta que empiece
 
 def parar ():
-  miServo.set_servo_pulsewidth(servoPin, 1500) # 1.º lo ponemos a 0 rpm
-  time.sleep(1)
-  miServo.set_servo_pulsewidth(servoPin, 0) # y 2.º lo "apagamos"
-  miServo.stop()
+    '''Stops the motor'''
+    miServo.set_servo_pulsewidth(servoPin, 1500) # 1.º lo ponemos a 0 rpm
+    time.sleep(1)
+    miServo.set_servo_pulsewidth(servoPin, 0) # y 2.º lo "apagamos"
+    miServo.stop()
 
 def normalize(value:int ,inputRange,outputRange) -> int:
     # Change the value
@@ -120,4 +124,5 @@ def main(mode):
 
 
 if __name__ == "__main__":
-    main("Senor")
+    # main("User") Uncomment to have CLI interaction and comment the command below
+    main("Senor") 
