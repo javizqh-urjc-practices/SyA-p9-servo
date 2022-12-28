@@ -33,7 +33,7 @@ def callbackBotonPulsado (canal):
 def adelante (velocidad): # girar en un sentido a velocidad máxima 120 rpm
     '''Goes to the front with the specified speed (0-100)'''
     vel = normalize(int(velocidad),[100,0],[1720,1500 + 25])
-    miServo.set_servo_pulsewidth(servoPin, vel) # 36 hasta que empiece
+    miServo.set_servo_pulsewidth(servoPin, vel) # 25 hasta que empiece
 
 def atras (velocidad): # girar en el otro sentido a velocidad máxima
     '''Goes to the back with the specified speed (0-100)'''
